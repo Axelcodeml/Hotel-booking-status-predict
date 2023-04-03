@@ -1,11 +1,24 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[8]:
+
 
 # Script of data preparation
-import pandas as pd
 import numpy as np
+import pandas as pd
 import os
+
+import statsmodels.api as sm
+from statsmodels.tools.tools import add_constant
+
+import warnings
+warnings.filterwarnings("ignore")
+from statsmodels.tools.sm_exceptions import ConvergenceWarning
+warnings.simplefilter('ignore', ConvergenceWarning)
+
+
+# In[2]:
 
 
 # functions to treat outliers by flooring and capping
@@ -28,11 +41,17 @@ def treat_outliers_all(df, col_list):
     return df
 
 
+# In[3]:
+
+
 # Read csv files:
 def read_file_csv(filename):
     df = pd.read_csv(os.path.join('../data/raw/', filename))
     print(filename, 'Succesfully loaded')
     return df
+
+
+# In[4]:
 
 
 #We do the data transformation
@@ -91,15 +110,37 @@ def data_preparation(df):
     df['repeated_guest'] = df['repeated_guest'].astype('category')
     df['booking_status'] = df['booking_status'].astype('int64')
     
+    df.drop(['Unnamed: 0','Booking_ID'],axis=1,inplace=True)
+    
+    # Dummy variables
+    X = df.drop(["booking_status"], axis=1)
+    Y = df["booking_status"]
+
+    # adding a contstant to X variable
+    X = add_constant(X)
+
+    # creating dummies
+    X = pd.get_dummies(X,columns=X.select_dtypes(include=["object", "category"]).columns.tolist(), drop_first=True)    
+    
+    
+    df=X.copy()
+    df['booking_status']=Y.copy()    
+    
     print('Completed data transformation')
     
     return df
+
+
+# In[5]:
 
 
 def data_exporting(df, filename):
     dfp = df
     dfp.to_csv(os.path.join('../data/processed/', filename))
     print(filename, 'Correctly exported to processed folder')
+
+
+# In[6]:
 
 
 def main():
@@ -119,5 +160,20 @@ def main():
     data_exporting(tdf3,'booking_score.csv')
 
 
+# In[9]:
+
+
 if __name__ == "__main__":
     main()
+
+
+# In[10]:
+
+
+df1 = pd.read_csv("../data/processed/booking_train.csv")
+print(df1.shape)
+df2 = pd.read_csv("../data/processed/booking_val.csv")
+print(df2.shape)
+df3 = pd.read_csv("../data/processed/booking_score.csv")
+print(df3.shape)
+
