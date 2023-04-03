@@ -1,4 +1,4 @@
-# hotel-booking-status-predict
+# Hotel-booking-status-predict
 
 This repository has the datasets and scripts: train-validation-scoring(testing) in order to predict by means a classification algorithm about hotel bookings cancellations. 
 
