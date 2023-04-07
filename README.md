@@ -1,6 +1,6 @@
 # Hotel-booking-status-predict
-## The project is developed by using a classification algorithm: Logistic Regression
-### This repository has the datasets and scripts: train-validation-scoring(testing) in order to predict by means a classification algorithm about hotel bookings cancellations. 
+## The project was developed by using a classification algorithm: Logistic Regression
+### This repository has the scripts: train-validation-scoring(testing) in order to predict with a classification algorithm about hotel bookings cancellations. 
 
 
 Project Organization
@@ -35,5 +35,9 @@ Project Organization
     └── LICENSE                     <- License
     
     --------
+
+#### ### The dataset was provided during my data science training where classification algorithm like Logistic Regression and Decistion Tree wee applied.
+
+To apply Logistic Regression, we have needed to drop-out some variables to determine what variables are necessary to process the modeling. We have also considered the p-value parameter like other way to drop-out the unnecessary variables. These variable pre-processing you can see in **Preparing_data.ipynb** from Notebook file.
 
 <p><small>Structure of Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
