@@ -1,11 +1,11 @@
 # Hotel-booking-status-predict
+## The project is developed by using a classification algorithm: Logistic Regression
+### This repository has the datasets and scripts: train-validation-scoring(testing) in order to predict by means a classification algorithm about hotel bookings cancellations. 
 
-This repository has the datasets and scripts: train-validation-scoring(testing) in order to predict by means a classification algorithm about hotel bookings cancellations. 
-
-The project is developed by using a classification algorithm: Logistic Regression
 
 Project Organization
 ----------------------
+
 
     ├── README.md                   <- The Top-level README for developers using this project
     ├── data
@@ -15,7 +15,8 @@ Project Organization
     |
     ├── model                       <- Trained and serialized models, model predictions, or model summaries
     |
-    ├── notebooks                   <- Jupyter notebooks. Naming convencion is a number (for ordering: N1, N2)
+    ├── notebooks                   <- Jupyter notebooks. Naming convencion is a number 
+    |                                    (for ordering: N1, N2)
     |
     ├── requirements.txt
     |
